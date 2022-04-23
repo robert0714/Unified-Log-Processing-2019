@@ -1,14 +1,19 @@
 plugins {
-  // Apply the java-library plugin to add support for Java Library
-  // id 'java'
-  // id 'java-library'
-  id 'com.github.johnrengelman.shadow' version '7.0.0'
-  id 'application'
+    // Apply the java plugin to add support for Java
+    id 'java'
+
+    // Apply the application plugin to add support for building a CLI application.
+    // id 'application'
+
+
+    // Used for generating fatjar
+    // id 'com.github.johnrengelman.shadow' version '7.0.0'
 }
 
-sourceCompatibility = '1.8'
-mainClassName = 'nile.StreamApp'
-version = '0.1.0'
+
+repositories {
+   mavenCentral()
+}
 
 dependencies {
   implementation 'org.apache.kafka:kafka-clients:2.7.1'
@@ -18,13 +23,18 @@ dependencies {
   implementation 'org.slf4j:slf4j-simple:1.7.36'
 }
 
-repositories {
-   mavenCentral()
-}
+// application {
+//     // Define the main class for the application.
+//     mainClassName = 'nile.StreamApp'
+//     sourceCompatibility = '1.8'
+//     version = '0.1.0'
+// }
 
  
-shadowJar {
-    manifest {
-         attributes 'Main-Class': mainClassName
-    }
-}
+
+task runStreamApp(type: JavaExec) { 
+  main = 'nile.StreamApp'
+  classpath = sourceSets.main.runtimeClasspath
+  // arguments to pass to the application
+  args = ['localhost:9092', 'ulp-ch03-3.3','raw-events-ch03','enriched-events']
+} 

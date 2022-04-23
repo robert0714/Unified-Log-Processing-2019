@@ -4,7 +4,13 @@ $ cd ~/nile
 $ gradle build
 $ java -jar ./build/libs/nile-0.1.0-all.jar localhost:9092 ulp-ch03-3.3   raw-events-ch03 enriched-events
 ```
+or 
 
+```
+$ cd ~/nile
+$ gradle build
+$ gradle run runStreamApp  --info
+```
 ##  Docker
 Apache Kafka doesn’t provide official Docker images at this time, but Confluent does. Those images are tested, supported, and used by many developers in production. In the repository of examples for this book, you’ll find a docker-compose.yaml file with preconfigured Kafka, ZooKeeper, and other components. To get all the components up and running, issue the command docker-compose up -d in the directory with the YAML file as the following listing shows.
 
