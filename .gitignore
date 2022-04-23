@@ -2,3 +2,15 @@
 
 # Vagrant
 .vagrant/
+
+
+.classpath/
+.project/
+.settings/
+**/GeoLite2-City.tar.gz
+**/bin/
+**/GeoLite2-City_*
+
+**/.classpath
+**/.project
+**/.settings/
